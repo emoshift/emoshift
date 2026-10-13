@@ -316,12 +316,18 @@ const groups=[
 const target=document.getElementById("audio-grid");
 const slug={"ESD":"esd","OMG-Emotion":"omg","IEMOCAP":"iemocap","MSP-Podcast":"msp-podcast"};
 const keys=["real_AA","real_AB","fake_AA","fake_AB"];
+const emotionLabels={
+ "ESD":["Neutral → Neutral","Neutral → Angry","Neutral → Neutral","Neutral → Angry"],
+ "OMG-Emotion":["Neutral → Neutral","Sad → Happy","Neutral → Neutral","Sad → Happy"],
+ "IEMOCAP":["Stable emotion (AA)","Neutral → Excited","Stable emotion (AA)","Neutral → Excited"],
+ "MSP-Podcast":["Neutral → Neutral","Sad → Excited","Neutral → Neutral","Sad → Excited"]
+};
 for(const [corpus,ids] of groups){
  const card=document.createElement("div");card.className="demo-card";
  const title=document.createElement("h3");title.textContent=corpus;card.appendChild(title);
  ids.forEach((id,i)=>{
   const item=document.createElement("div");item.className="demo-cell";
-  const heading=document.createElement("div");heading.className="demo-label";heading.textContent=kinds[i];item.appendChild(heading);
+  const heading=document.createElement("div");heading.className="demo-label";heading.style.cssText="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:5px 12px";const kindText=document.createElement("span");kindText.textContent=kinds[i];const emotionText=document.createElement("span");emotionText.textContent=emotionLabels[corpus][i];emotionText.style.cssText="font-size:12px;font-weight:500;color:var(--lavender-deep);background:var(--lavender-pale);border-radius:6px;padding:3px 8px";heading.appendChild(kindText);heading.appendChild(emotionText);item.appendChild(heading);
   const player=document.createElement("audio");player.controls=true;player.preload="none";player.style.cssText="display:block;width:100%;margin:8px 0";
   player.src="assets/audio/"+slug[corpus]+"_"+keys[i]+".wav?v=c39619a";
   const status=document.createElement("div");status.className="demo-status";status.textContent="Loading audio...";
