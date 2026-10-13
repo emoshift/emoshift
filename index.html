@@ -319,8 +319,8 @@ const keys=["real_AA","real_AB","fake_AA","fake_AB"];
 const emotionLabels={
  "ESD":["Neutral → Neutral","Neutral → Angry","Neutral → Neutral","Neutral → Angry"],
  "OMG-Emotion":["Neutral → Neutral","Sad → Happy","Neutral → Neutral","Sad → Happy"],
- "IEMOCAP":["Stable emotion (AA)","Neutral → Excited","Stable emotion (AA)","Neutral → Excited"],
- "MSP-Podcast":["Neutral → Neutral","Sad → Excited","Neutral → Neutral","Sad → Excited"]
+ "IEMOCAP":["Angry → Angry · d_VAD = 0.083","Neutral → Excited · d_VAD = 1.087","Angry → Angry · d_VAD = 0.083","Neutral → Excited · d_VAD = 1.087"],
+ "MSP-Podcast":["Neutral → Neutral · d_VAD = 0.000","Sad → Excited · d_VAD = 1.394","Neutral → Neutral · d_VAD = 0.000","Sad → Excited · d_VAD = 1.394"]
 };
 for(const [corpus,ids] of groups){
  const card=document.createElement("div");card.className="demo-card";
